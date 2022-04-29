@@ -1,0 +1,39 @@
+name: Aggregated Updatesite Generation
+
+on:
+  push:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/MANIFEST.MF') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Generate aggregated updatesite
+        working-directory: ./aggregation
+        run: >
+          ./mvnw -B -U package
+          -Dstyle.color=always
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.tycho.core.resolver.DefaultTychoResolver=warn
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.tycho.osgi.configuration.MavenContextConfigurator=warn
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.sisu.equinox.launching.internal.DefaultEquinoxLauncher=warn
+          -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.NoOpLog
+        env: 
+          MAVEN_OPTS: -Djansi.force=true
+      - name: Publish Nightly Update Site
+        # Only publish commits on master branch if it is not a commit from this build, i.e., producing a deploy commit but not this repository
+        if: github.ref == 'refs/heads/master' && github.repository_owner == 'vitruv-tools' && !contains(github.event.head_commit.message, 'updatesite')
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
+          external_repository: vitruv-tools/updatesite
+          destination_dir: nightly/aggregated
+          publish_dir: aggregation/tools.vitruv.updatesite.nightly.aggregated/target/final
+          publish_branch: master
+          
