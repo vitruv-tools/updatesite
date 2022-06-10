@@ -3,6 +3,7 @@
   <validationSets label="main">
     <contributions label="local">
       <repositories location="../../nightly/framework"/>
+      <repositories location="../../nightly/dsls"/>
       <repositories location="../../nightly/domains/cbs"/>
       <repositories location="../../nightly/applications/cbs"/>
     </contributions>
