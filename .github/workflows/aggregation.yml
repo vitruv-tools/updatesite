@@ -27,8 +27,8 @@ jobs:
         env: 
           MAVEN_OPTS: -Djansi.force=true
       - name: Publish Nightly Update Site
-        # Only publish commits on master branch if it is not a commit from this build, i.e., producing a deploy commit but not this repository
-        if: github.ref == 'refs/heads/master' && github.repository_owner == 'vitruv-tools' && !contains(github.event.head_commit.message, 'updatesite')
+        # Only publish commits on master branch if it is not a commit from this build, i.e., producing a deploy commit from this repository
+        if: github.ref == 'refs/heads/master' && github.repository_owner == 'vitruv-tools' && !contains(github.event.head_commit.message, 'vitruv-tools/updatesite')
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
