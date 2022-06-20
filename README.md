@@ -1,8 +1,11 @@
-# Vitruv Update Sites
+# Vitruv Eclipse Update Sites
 
 ## Provided Top Level Update Sites
 
+This repository provides two Eclipse update sites for `nightly` and `release` artifacts of the Vitruv projects to be installed via the `Install new software` function within Eclipse.
+
 Nightly: [https://vitruv-tools.github.io/updatesite/nightly/aggregated](https://vitruv-tools.github.io/updatesite/nightly/aggregated)
+
 Release: [https://vitruv-tools.github.io/updatesite/release](https://vitruv-tools.github.io/updatesite/release)
 
 ## Purpose
