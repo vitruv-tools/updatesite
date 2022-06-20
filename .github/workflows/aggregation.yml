@@ -12,4 +12,5 @@ jobs:
         with:
           workflow: Generate And Deploy
           repo: vitruv-tools/Vitruv-Build-AggregatedUpdateSite
+          ref: refs/heads/main
           token: ${{ secrets.TRIGGER_WORKFLOW_TOKEN }}
