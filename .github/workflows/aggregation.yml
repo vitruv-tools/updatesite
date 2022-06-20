@@ -5,6 +5,8 @@ on:
 
 jobs:
   aggregation:
+    # Only call aggregation if the workflow is not triggered by publishing an aggrated site (avoid loops)
+    if: "!contains(github.event.head_commit.message, 'vitruv-tools/Vitruv-Build-AggregatedUpdateSite')"
     runs-on: ubuntu-latest
     steps:
       - name: Trigger aggregated update site generation
