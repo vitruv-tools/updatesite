@@ -5,9 +5,7 @@
   <properties size='1'>
     <property name='p2.timestamp' value='1243822502442'/>
   </properties>
-  <children size='3'>
-    <child location='framework'/>
-    <child location='domains'/>
-    <child location='applications'/>
+  <children size='1'>
+    <child location='aggregated'/>
   </children>
 </repository>
