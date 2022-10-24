@@ -2,7 +2,7 @@ name: Truncate Git History
 
 on:
   schedule: 
-    - cron: '0 0 1 * *' # run once a month
+    - cron: '0 6 1 * *' # run every first of the month at 6:00 AM
   workflow_dispatch:
 
 jobs:
