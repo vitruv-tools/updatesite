@@ -1,0 +1,17 @@
+name: Truncate Git History
+
+on:
+  schedule: 
+    - cron: '0 0 1 * *' # run once a month
+  workflow_dispatch:
+
+jobs:
+  trim:
+    if: github.ref == 'refs/heads/main' && github.repository_owner == 'vitruv-tools'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Truncate Git history
+        run: |
+          git clone ${{github.repositoryUrl}} -b main --depth 1
+          git commit --amend -m "truncated history"
+          git push origin main --force
