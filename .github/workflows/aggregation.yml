@@ -1,0 +1,19 @@
+name: Trigger Aggregated Update Site Generation
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  aggregation:
+    # Only call aggregation if the workflow is not triggered by publishing an aggregated site (avoid loops)
+    if: "!contains(github.event.head_commit.message, 'vitruv-tools/Vitruv-Build-AggregatedUpdateSite')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger aggregated update site generation
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Generate And Deploy
+          repo: vitruv-tools/Vitruv-Build-AggregatedUpdateSite
+          ref: refs/heads/main
+          token: ${{ secrets.TRIGGER_WORKFLOW_TOKEN }}
