@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger aggregated update site generation
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v121
         with:
           workflow: Generate And Deploy
           repo: vitruv-tools/Vitruv-Build-AggregatedUpdateSite
