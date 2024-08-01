@@ -1,6 +1,45 @@
-<h1>Vitruv Updatesites</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vitruvius Updatesites</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
+            @media (max-width: 839px) {
+                .images {
+                    width: 100%;
+                }
+            }
+            @media (min-width: 840px) {
+                body {
+                    max-width: 840px;
+                    margin: auto;
+                }
+                .images {
+                    width: 620px;
+                }
+            }
+            .page-title, .images {
+                align-self: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="page-title">Vitruvius Updatesites</h1>
 
-You can add our nightly or release updatesites in Eclipse and start installing features from it:
+        <span>To install Vitruvius, you can add our nightly or release updatesites within Eclipse and start installing features from them:</span>
 
-<p>Nightly: <a href=http://vitruv.tools/updatesite/nightly/aggregated>http://vitruv.tools/updatesite/nightly/aggregated</a></p>
-<p>Release: <a href=http://vitruv.tools/updatesite/release>http://vitruv.tools/updatesite/release</a></p>
+        <ul>
+            <li>Nightly: <a href=https://vitruv-tools.github.io/updatesite/nightly/aggregated>https://vitruv-tools.github.io/updatesite/nightly/aggregated</a></li>
+            <li>Release: <a href=https://vitruv-tools.github.io/updatesite/release>https://vitruv-tools.github.io/updatesite/release</a></li>
+        </ul>
+
+        <p>Within Eclipse, navigate to <em>Help - Install New Software</em> and click on the option.</p>
+        <img class="images" src="/img/menu_install.png" alt="Eclipse menu to navigate to the installation window" />
+        <p>In the new window, paste the updatesite link into <em>Work with:</em>, press enter, and select the plugins you want to install.</p>
+        <img class="images" src="/img/window_install.png" alt="Eclipse window to install new plugins" width="620px" />
+    </body>
+</html>
